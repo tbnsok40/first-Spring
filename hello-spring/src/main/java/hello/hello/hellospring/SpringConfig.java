@@ -8,12 +8,15 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class SpringConfig {
-    @Bean //스프링 빈을 등록할 것이란 의미
-    public MemberService memberService(){
-        return new MemberService(memberRepository()); // 생성자에 memberRepository를 넣어줘야 한다.
+
+    @Bean // spring container에 bean을 등록할 것을 알린다.
+    public MemberRepository memberRepository(){
+        return new MemoryMemberRepository();
     }
+    // MemberRepository는 인터페이스이기에 new 사용불가
+
     @Bean
-    public MemberRepository memberRepository(){ // MemberRepository는 인터페이스이기에 new 사용불가
-        return new MemoryMemberRepository(); //MemoryMemberRepository는 구현체
+    public MemberService memberService(){
+        return new MemberService(memberRepository()); // 생성자에 memberRepository를 넣어준다(DI)
     }
 }

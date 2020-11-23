@@ -12,31 +12,35 @@ import java.util.List;
 
 @Controller // 이게 붙으면 스프링 컨테이너가 관리하게 된다.
 public class MemberController {
-    private final MemberService memberService; // spring container에게 등록을 하겠다.
+    private final MemberService memberService; // spring 컨테이너에 등록
 
-    @Autowired //spring container에 있는 memberService를 가져다 연결해준다.
-    public MemberController(MemberService memberService) {
+    @Autowired // 자동 주입 (memberService)
+    public MemberController(MemberService memberService){
         this.memberService = memberService;
     }
 
+    // data 조회할 땐 getMapping
     @GetMapping("/members/new")
     public String createForm(){
         return "members/createMemberForm";
     }
 
-    @PostMapping("/members/new") // data를 넘길 대 postMapping 사용 / data 조회할 땐 getMapping
-    public String create(MemberForm form){ // MemberForm 클래스의 name에 값이 넘어온다.
+    // data 넘길 때 postMapping
+    // createMemberForm.html의 <form action = "/members/new" method="post">
+    @PostMapping("/members/new")
+    public String create(MemberForm form){ // MemberForm 클래스의 name 변수에 값이 넘어온다
         Member member = new Member();
+
         member.setName(form.getName());
+        member.setGender(form.getGender());
+
         memberService.join(member);
         return "redirect:/";
     }
-
     @GetMapping("/members")
     public String list(Model model){
         List<Member> members = memberService.findMembers();
-        model.addAttribute("members", members);
-
+        model.addAttribute("members2", members);
         return "members/memberList";
     }
 }

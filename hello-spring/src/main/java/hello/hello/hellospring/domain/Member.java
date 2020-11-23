@@ -3,6 +3,15 @@ package hello.hello.hellospring.domain;
 public class Member {
     private Long id;
     private String name;
+    private String gender;
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
     public Long getId() {
         return id;

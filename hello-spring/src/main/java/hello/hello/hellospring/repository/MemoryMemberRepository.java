@@ -3,14 +3,14 @@ package hello.hello.hellospring.repository;
 import hello.hello.hellospring.domain.Member;
 
 import java.util.*;
-
+// MemberRepository: 메서드만 있는 인터페이스
 public class MemoryMemberRepository implements MemberRepository{
 
     private static Map<Long, Member> store = new HashMap<>();
     private static long sequence = 0L; //key값 생성
 
     @Override
-    public Member save(Member member) {
+    public Member save(Member member) { // Member 자료형을 저장한다
         member.setId(++sequence);
         store.put(member.getId(), member);
         return member;
