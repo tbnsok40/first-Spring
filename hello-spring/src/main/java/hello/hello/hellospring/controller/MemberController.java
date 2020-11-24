@@ -20,15 +20,15 @@ public class MemberController {
     }
 
     // data 조회할 땐 getMapping
-    @GetMapping("/members/new")
-    public String createForm(){
+    @GetMapping("/members/new") // url로 보낸다 => createMemberForm.html render
+    public String createForm2(){
         return "members/createMemberForm";
     }
 
     // data 넘길 때 postMapping
     // createMemberForm.html의 <form action = "/members/new" method="post">
     @PostMapping("/members/new")
-    public String create(MemberForm form){ // MemberForm 클래스의 name 변수에 값이 넘어온다
+    public String create2(MemberForm form){ // MemberForm 클래스의 name 변수에 값이 넘어온다
         Member member = new Member();
 
         member.setName(form.getName());
@@ -39,8 +39,8 @@ public class MemberController {
     }
     @GetMapping("/members")
     public String list(Model model){
-        List<Member> members = memberService.findMembers();
-        model.addAttribute("members2", members);
+        List<Member> members = memberService.findMembers(); // findMembers()메소드 자체가 리턴형이 List<Member>
+        model.addAttribute("members", members);
         return "members/memberList";
     }
 }

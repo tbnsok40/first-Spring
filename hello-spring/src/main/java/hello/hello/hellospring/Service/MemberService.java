@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Optional;
 
 // 컨테이너가 인지할 수 있도록, 스프링 컨테이너에 올려준다 MemberService 클래스를.
-
 public class MemberService {
     private final MemberRepository memberRepository;
 

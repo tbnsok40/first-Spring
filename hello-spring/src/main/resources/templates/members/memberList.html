@@ -18,12 +18,11 @@
             </thead>
             <tbody>
 <!--th:each 타임리프 문법-->
-            <tr th:each="member : ${members2}">
+            <tr th:each="member : ${members}">
                 <td th:text="${member.id}"></td>
                 <td th:text="${member.name}"></td>
                 <td th:text="${member.gender}"></td>
             </tr>
-
             </tbody>
         </table>
     </div>
