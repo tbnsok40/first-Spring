@@ -5,8 +5,9 @@ import hello.hello.hellospring.repository.MemoryMemberRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.test.annotation.Commit;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class MemberServiceTest {
@@ -25,6 +26,7 @@ class MemberServiceTest {
 
     // test코드는 한글로 이름 지어도 ㄱㅊ
     @Test
+    @Commit // test지만 실제로 DB에 올린다
     void 회원가입() {
 
         // recommended tdd method (꼭 이 상황이 맞는 것은 아니다)

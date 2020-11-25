@@ -3,10 +3,12 @@ package hello.hello.hellospring.Service;
 import hello.hello.hellospring.domain.Member;
 import hello.hello.hellospring.repository.MemberRepository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
 // 컨테이너가 인지할 수 있도록, 스프링 컨테이너에 올려준다 MemberService 클래스를.
+@Transactional
 public class MemberService {
     private final MemberRepository memberRepository;
 
